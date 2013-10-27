@@ -5,7 +5,7 @@ class alphaPad {
         private $key = 0;
         private $padding_par = 0;
         private $alphabet = array(
-        "00"=>"_", "01"=>"a","02"=>"b","03"=>"c","04"=>"d","05"=>"e","06"=>"f","07"=>"g","08"=>"h","09"=>"i",
+        "00"=>" ", "01"=>"a","02"=>"b","03"=>"c","04"=>"d","05"=>"e","06"=>"f","07"=>"g","08"=>"h","09"=>"i",
         "10"=>"j","11"=>"k","12"=>"l","13"=>"m","14"=>"n","15"=>"o","16"=>"p","17"=>"q","18"=>"r","19"=>"s",
         "20"=>"t","21"=>"u","22"=>"v","23"=>"w","24"=>"x","25"=>"y","26"=>"z","27"=>"_");
         private $sub_par = 0;
@@ -48,6 +48,7 @@ class alphaPad {
                                 ksort($block_a); /*[3]*/
                                 $this->ciphertext .= implode("",$block_a);
                         }
+                        //- $this->ciphertext = $this->ciphertext - $this->sub_par;  
                         print "<br>Ciphertext: ".$this->ciphertext;
                 }
                 catch(Exception $e){
@@ -68,6 +69,7 @@ class alphaPad {
                 try{                
                         $this->plaintext = "";
                         $this->ciphertext = $ciphertext;
+                        //- $this->ciphertext = $this->ciphertext + $this->sub_par;  
                         print "<div id='out'>Ciphertext: ".$this->ciphertext." <br>(key: ".$this->key." - padding parameter: ".$this->padding_par.")";
 
                         //- split the ciphertext into block of lenght = string lenght of the items in $alphabet = 2 [1]
@@ -119,7 +121,7 @@ class alphaPad {
         
         private function _sp($pad,$len){
                 $sp = "";
-                for($i=0; $i<$len; $i++) $sp.=$pad; //- so that the substraction will always be > 0
+                for($i=0; $i<$len; $i++) $sp.=(int)($pad/2); //- so that the substraction will always be > 0
                 return $sp;
         }
 }
