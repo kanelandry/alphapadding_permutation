@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Codijuana - Permutation cipher </title>
+<style>#spe{color:#FF9900;} #result1, #result2{padding:0px 5px 5px 5px; background-color:#FF9900; margin-top: 5px;}
+#moreinfo{width:700px;padding: 0px 5px 5px 5px; background-color:#C0C0C0 ; border-radius:5px;margin-top:10px;}
+#out{border-bottom:1px solid #fff; margin-bottom:5px;}
+</style>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+	$('#set').live("click",function() {var key = $("#key").val();var pad = $("#pad").val(); var dataString = 'key='+ key + '&pad='+pad +'&prefix=set';$.ajax({type: "POST",url: "crypt.php",data: dataString,cache: false,success: function(html){$("#reply").html(html);}});return false;});		
+	$('#decrypt').live("click",function() {var tmp = $("#ucode").val();var data = tmp.trim();var dataString = 'code='+ data +'&prefix=de';if(data.length>0){$.ajax({type: "POST",url: "crypt.php",data: dataString,cache: false,success: function(html){$("#result2").append(html);}});}return false;});		
+	$('#encrypt').live("click",function() {var tmp = $("#uname").val();var data = tmp.trim();var dataString = 'name='+ data +'&prefix=en';if(data.length>0){$.ajax({type: "POST",url: "crypt.php",data: dataString,cache: false,success: function(html){$("#result1").append(html);}});}return false;});		
+</script>
+</head>
+<body>
+  <div><a href="./"><b>Clear the results</b></a> | <a href=""><b>Read the related article</b></a></div>
+  <table>
+	<tr>
+		<td style="width:300px;">
+			<h3>Set the environment</h3>
+			The key: <input type="text" name="key" size="1" maxlength="3" id="key"/> <br>
+			The padding parameter: <input type="text" name="pad" size="1" maxlength="3" id="pad"/> <br>
+			<input type="submit" id="set" value="set"/><span id="reply"></span>
+		</td>
+		<td style="padding:10px 10px 10px 10px;width:400px;" valign="top">
+		  <div>
+			<h3 id="spe">Please enter the name to encrypt</h3>
+			<input type="text" name="name" id="uname">
+			<input type="submit" id="encrypt" value="encrypt">
+			<div id="result1"></div>
+		  </div>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td style="padding:10px 10px 10px 10px;width:400px;" valign="top">
+		  <div>
+			<h3 id="spe">Please enter the code to decrypt</h3>
+			<input type="text" name="code" id="ucode">
+			<input type="submit" id="decrypt" value="decrypt">
+			<div id="result2"></div>
+		  </div>
+		</td>
+	</tr>
+  </table>
+  <div id="moreinfo"><b>Note:</b> <br>(1): The encryption/decryption perfectly works for the letters of the alphabet <br> (2): For performance issue, we included the processing time in the results of each encryption
+  and decryption. Have fun!</div>
+</body>
+</html>
