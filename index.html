@@ -2,7 +2,8 @@
 <html>
 <head>
 <title> Codijuana - Permutation cipher </title>
-<style>#spe{color:#FF9900;} #result1, #result2{padding:0px 5px 5px 5px; background-color:#FF9900; margin-top: 5px;}
+<style>
+#spe{color:#FF9900;} #result1, #result2{padding:0px 5px 5px 5px; background-color:#FF9900; margin-top: 5px;}
 #moreinfo{width:700px;padding: 0px 5px 5px 5px; background-color:#C0C0C0 ; border-radius:5px;margin-top:10px;}
 #out{border-bottom:1px solid #fff; margin-bottom:5px;}
 </style>
@@ -44,7 +45,11 @@
 		</td>
 	</tr>
   </table>
-  <div id="moreinfo"><b>Note:</b> <br>(1): The encryption/decryption perfectly works for the letters of the alphabet <br> (2): For performance issue, we included the processing time in the results of each encryption
+  <div id="moreinfo"><b>Note:</b>
+  <br>(1): The encryption/decryption perfectly works for the letters of the alphabet <br> (2): For performance issue, we included the processing time in the results of each encryption
+   (2): The subpad's addition/substracted was removed because the PHP module of this host couldn't handle large integers<br> 
+   (3): Because the key's digits serve as array indexes, it shall not contain similar digits (e.g: 1000, 1199,....)<br> 
+   (4): For performance issue, we included the processing time in the results of each encryption
   and decryption. Have fun!</div>
 </body>
 </html>
