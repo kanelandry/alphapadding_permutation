@@ -35,7 +35,7 @@ class alphaPad {
                         
                         foreach ($plain_a as $block) { /*[2]*/
                                 $empty_space=strlen($block)% $this->lenght;
-                                if( $empty_space > 0) {for($j=1; $j<=($this->lenght-$empty_space); $j++) {$block .="&nbsp";}}
+                                if( $empty_space > 0) {for($j=1; $j<=($this->lenght-$empty_space); $j++) {$block .="-";}}
                                 
                                 $block_a = str_split($block);
                                 $tmp = array(); //- we put all the changes in a temp array first
